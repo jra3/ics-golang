@@ -13,8 +13,10 @@ type Event struct {
 	endTZID       string
 	created       time.Time
 	modified      time.Time
+	stamp         time.Time
 	alarmTime     time.Duration
 	importedId    string
+	DTZID         []string
 	status        string
 	description   string
 	location      string
@@ -256,6 +258,24 @@ func (e *Event) SetGeo(geo *Geo) *Event {
 
 func (e *Event) GetGeo() *Geo {
 	return e.geo
+}
+
+func (e *Event) SetDTZID(icalZone []string) *Event {
+	e.DTZID = icalZone
+	return e
+}
+
+func (e *Event) GetDTZID() []string {
+	return e.DTZID
+}
+
+func (e *Event) SetDTStamp(stamp time.Time) *Event {
+	e.stamp = stamp
+	return e
+}
+
+func (e *Event) GetDTStamp() time.Time {
+	return e.stamp
 }
 
 func (e *Event) String() string {
